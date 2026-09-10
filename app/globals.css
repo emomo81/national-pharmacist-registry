@@ -12,7 +12,7 @@
     text-rendering: optimizeLegibility;
   }
   ::selection {
-    background-color: theme("colors.brand.200");
+    background-color: theme("colors.accent.200");
   }
 }
 
@@ -33,7 +33,7 @@
     @apply font-normal text-slate-400;
   }
   .input {
-    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-brand-500 focus:ring-4 focus:ring-brand-100 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-500;
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-brand-400 focus:ring-4 focus:ring-brand-100 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-500;
   }
   .input-error {
     @apply border-red-400 focus:border-red-500 focus:ring-red-100;
@@ -46,11 +46,16 @@
   .btn {
     @apply inline-flex select-none items-center justify-center gap-2 whitespace-nowrap rounded-lg px-4 py-2.5 text-sm font-semibold transition focus:outline-none focus-visible:ring-4 disabled:cursor-not-allowed disabled:opacity-55;
   }
+  /* primary action — navy (matches approved UI kit) */
   .btn-primary {
-    @apply btn bg-brand-700 text-white hover:bg-brand-800 focus-visible:ring-brand-200;
+    @apply btn bg-brand-800 text-white hover:bg-brand-900 focus-visible:ring-brand-200;
+  }
+  /* CTA — LPB green */
+  .btn-accent {
+    @apply btn bg-accent-500 text-white hover:bg-accent-600 focus-visible:ring-accent-200;
   }
   .btn-dark {
-    @apply btn bg-slate-900 text-white hover:bg-slate-800 focus-visible:ring-slate-300;
+    @apply btn bg-brand-950 text-white hover:bg-brand-900 focus-visible:ring-brand-300;
   }
   .btn-outline {
     @apply btn border border-slate-300 bg-white text-slate-700 hover:border-slate-400 hover:bg-slate-50 focus-visible:ring-slate-200;
@@ -61,8 +66,8 @@
   .btn-danger {
     @apply btn bg-red-600 text-white hover:bg-red-700 focus-visible:ring-red-200;
   }
-  .btn-gold {
-    @apply btn bg-gold-500 text-brand-950 hover:bg-gold-400 focus-visible:ring-gold-300;
+  .btn-glass {
+    @apply btn border border-white/30 bg-white/10 text-white backdrop-blur hover:bg-white/20 focus-visible:ring-white/30;
   }
 
   /* ---------- chips / badges ---------- */
@@ -81,15 +86,14 @@
 @layer utilities {
   .bg-grid {
     background-image:
-      linear-gradient(to right, rgba(8, 35, 26, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(8, 35, 26, 0.05) 1px, transparent 1px);
-    background-size: 34px 34px;
+      linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: 36px 36px;
   }
   .hero-fade {
     background:
-      radial-gradient(60% 120% at 100% 0%, rgba(201, 162, 39, 0.14) 0%, transparent 55%),
-      radial-gradient(75% 100% at 0% 100%, rgba(46, 152, 108, 0.2) 0%, transparent 60%),
-      linear-gradient(160deg, #0b3527 0%, #124030 45%, #08231a 100%);
+      radial-gradient(70% 120% at 0% 100%, rgba(51, 156, 92, 0.22) 0%, transparent 55%),
+      linear-gradient(165deg, #122f4e 0%, #0c2138 48%, #071627 100%);
   }
 }
 

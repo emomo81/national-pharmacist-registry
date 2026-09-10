@@ -104,7 +104,7 @@ export default function SubmissionDetailPage() {
         <AlertTriangle className="mx-auto h-8 w-8 text-amber-500" />
         <h2 className="mt-3 text-lg font-bold text-brand-950">Record not found</h2>
         <p className="mt-1 text-sm text-slate-500">This submission may have been removed or the link is incorrect.</p>
-        <Link href="/admin/submissions" className="btn-primary mt-5">
+        <Link href="/admin/registry" className="btn-primary mt-5">
           <ArrowLeft className="h-4 w-4" /> Back to submissions
         </Link>
       </div>
@@ -125,7 +125,7 @@ export default function SubmissionDetailPage() {
       {/* Header */}
       <div className="card flex flex-wrap items-center justify-between gap-4 p-5">
         <div className="flex items-center gap-4">
-          <Link href="/admin/submissions" className="btn-outline px-2.5 py-2" aria-label="Back to submissions">
+          <Link href="/admin/registry" className="btn-outline px-2.5 py-2" aria-label="Back to submissions">
             <ArrowLeft className="h-4 w-4" />
           </Link>
           <div>

@@ -21,6 +21,12 @@ export default function SubmissionsPage() {
   const [sort, setSort] = useState<NonNullable<ListParams["sort"]>>("newest");
   const [page, setPage] = useState(1);
 
+  // Prefill search from the top-bar global search (?q=…)
+  useEffect(() => {
+    const initial = new URLSearchParams(window.location.search).get("q");
+    if (initial) setQ(initial);
+  }, []);
+
   useEffect(() => {
     setLoading(true);
     const handle = setTimeout(() => {
@@ -142,10 +148,10 @@ export default function SubmissionsPage() {
                 pageItems.map((r) => (
                   <tr key={r.id} className="group transition hover:bg-brand-50/40">
                     <td className="table-td font-mono text-xs font-bold text-brand-800">
-                      <Link href={`/admin/submissions/${r.id}`} className="hover:underline">{r.reference}</Link>
+                      <Link href={`/admin/registry/${r.id}`} className="hover:underline">{r.reference}</Link>
                     </td>
                     <td className="table-td">
-                      <Link href={`/admin/submissions/${r.id}`} className="font-semibold text-slate-800 group-hover:text-brand-900">
+                      <Link href={`/admin/registry/${r.id}`} className="font-semibold text-slate-800 group-hover:text-brand-900">
                         {fullName(r)}
                       </Link>
                       <p className="text-xs text-slate-400">{r.personal.gender} · {r.contact.city}</p>
@@ -161,7 +167,7 @@ export default function SubmissionsPage() {
                     </td>
                     <td className="table-td text-slate-500">{formatDate(r.submittedAt)}</td>
                     <td className="table-td text-right">
-                      <Link href={`/admin/submissions/${r.id}`} className="btn-ghost px-2.5 py-1.5 text-xs">
+                      <Link href={`/admin/registry/${r.id}`} className="btn-ghost px-2.5 py-1.5 text-xs">
                         Open <ChevronRight className="h-3.5 w-3.5" />
                       </Link>
                     </td>

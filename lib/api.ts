@@ -146,8 +146,102 @@ export async function saveRegistrationNote(id: string, note: string): Promise<Re
   return updated;
 }
 
-/** Reset the portal to the original 26-record demonstration dataset. */
+/** Reset the portal to the original 27-record demonstration dataset. */
 export async function resetDemoData(): Promise<void> {
   await wait(300);
   resetToSeeds();
+}
+
+/** Quick-add used by "Add New Pharmacist" in the admin portal. */
+export interface ManualRegistrationInput {
+  title: string;
+  firstName: string;
+  surname: string;
+  gender: string;
+  email: string;
+  phone: string;
+  lpbNumber: string;
+  category: string;
+  highestQualification: string;
+  initialRegistrationYear: string;
+  licenseExpiry: string;
+  sector: string;
+  facilityName: string;
+  position: string;
+  county: string;
+  status: StatusKey;
+  by: string;
+}
+
+export async function createManualRegistration(input: ManualRegistrationInput): Promise<Registration> {
+  await wait(500);
+  const records = readAll();
+  const now = new Date().toISOString();
+  const registration: Registration = {
+    id: uid(),
+    reference: nextReference(),
+    status: input.status,
+    submittedAt: now,
+    updatedAt: now,
+    personal: {
+      title: input.title,
+      surname: input.surname,
+      firstName: input.firstName,
+      dob: "",
+      gender: input.gender,
+      nationality: "Liberian",
+      countyOfOrigin: input.county,
+      nationalId: "",
+      maritalStatus: "",
+    },
+    contact: {
+      email: input.email,
+      phone: input.phone,
+      address: "",
+      city: "",
+      district: "",
+      county: input.county,
+    },
+    education: {
+      highestQualification: input.highestQualification,
+      institution: "",
+      countryOfTraining: "",
+      graduationYear: "",
+      specialization: "",
+    },
+    licensure: {
+      lpbNumber: input.lpbNumber,
+      category: input.category,
+      initialRegistrationYear: input.initialRegistrationYear,
+      licenseExpiry: input.licenseExpiry,
+      registeredElsewhere: false,
+      inGoodStanding: input.status !== "flagged",
+    },
+    employment: {
+      status: "Employed",
+      sector: input.sector,
+      facilityName: input.facilityName,
+      facilityType: "",
+      position: input.position,
+      county: input.county,
+      district: "",
+      yearsOfExperience: "",
+    },
+    documents: {},
+    declaration: { accurate: true, consent: true },
+    history: [{ at: now, action: "Record created manually by registrar", by: input.by }],
+  };
+  writeAll([registration, ...records]);
+  return registration;
+}
+
+/** Approximate size of the browser-side dataset (shown in System Overview). */
+export function getStorageSizeBytes(): number {
+  if (typeof localStorage === "undefined") return 0;
+  let total = 0;
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i) ?? "";
+    total += k.length + (localStorage.getItem(k)?.length ?? 0);
+  }
+  return total * 2; // UTF-16
 }

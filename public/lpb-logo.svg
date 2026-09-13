@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Liberia Pharmacy Board seal">
+  <defs>
+    <path id="lpb-top-arc" d="M 30 100 A 70 70 0 0 1 170 100" fill="none"/>
+  </defs>
+
+  <!-- outer green band + white text ring -->
+  <circle cx="100" cy="100" r="98" fill="#155527"/>
+  <circle cx="100" cy="100" r="86" fill="#ffffff"/>
+  <circle cx="100" cy="100" r="62" fill="#f6fbf4" stroke="#155527" stroke-width="2.5"/>
+
+  <!-- ring text -->
+  <text font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="15.5" letter-spacing="3" fill="#155527">
+    <textPath href="#lpb-top-arc" startOffset="50%" text-anchor="middle">LIBERIA PHARMACY</textPath>
+  </text>
+  <text x="100" y="166" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="16" letter-spacing="6" fill="#155527">BOARD</text>
+
+  <!-- ring separator marks -->
+  <circle cx="19.5" cy="100" r="3.2" fill="#3d7a35"/>
+  <circle cx="180.5" cy="100" r="3.2" fill="#3d7a35"/>
+
+  <!-- scattered capsules -->
+  <g transform="translate(66,58) rotate(-28)">
+    <rect x="-4.6" y="-10" width="9.2" height="10.6" rx="4.6" fill="#9ccc65" stroke="#2e6b30" stroke-width="0.9"/>
+    <rect x="-4.6" y="0" width="9.2" height="10.6" rx="4.6" fill="#155527" stroke="#2e6b30" stroke-width="0.9"/>
+  </g>
+  <g transform="translate(87,50) rotate(9)">
+    <rect x="-4.6" y="-10" width="9.2" height="10.6" rx="4.6" fill="#155527" stroke="#2e6b30" stroke-width="0.9"/>
+    <rect x="-4.6" y="0" width="9.2" height="10.6" rx="4.6" fill="#9ccc65" stroke="#2e6b30" stroke-width="0.9"/>
+  </g>
+  <g transform="translate(109,50) rotate(-14)">
+    <rect x="-4.6" y="-10" width="9.2" height="10.6" rx="4.6" fill="#9ccc65" stroke="#2e6b30" stroke-width="0.9"/>
+    <rect x="-4.6" y="0" width="9.2" height="10.6" rx="4.6" fill="#155527" stroke="#2e6b30" stroke-width="0.9"/>
+  </g>
+  <g transform="translate(129,58) rotate(26)">
+    <rect x="-4.6" y="-10" width="9.2" height="10.6" rx="4.6" fill="#155527" stroke="#2e6b30" stroke-width="0.9"/>
+    <rect x="-4.6" y="0" width="9.2" height="10.6" rx="4.6" fill="#9ccc65" stroke="#2e6b30" stroke-width="0.9"/>
+  </g>
+  <g transform="translate(76,75) rotate(-42)">
+    <rect x="-4.9" y="-10.6" width="9.8" height="11.2" rx="4.9" fill="#9ccc65" stroke="#2e6b30" stroke-width="0.9"/>
+    <rect x="-4.9" y="0" width="9.8" height="11.2" rx="4.9" fill="#155527" stroke="#2e6b30" stroke-width="0.9"/>
+  </g>
+  <g transform="translate(99,64) rotate(17)">
+    <rect x="-4.9" y="-10.6" width="9.8" height="11.2" rx="4.9" fill="#155527" stroke="#2e6b30" stroke-width="0.9"/>
+    <rect x="-4.9" y="0" width="9.8" height="11.2" rx="4.9" fill="#9ccc65" stroke="#2e6b30" stroke-width="0.9"/>
+  </g>
+  <g transform="translate(53,72) rotate(-60)">
+    <rect x="-4.3" y="-9.4" width="8.6" height="10" rx="4.3" fill="#155527" stroke="#2e6b30" stroke-width="0.9"/>
+    <rect x="-4.3" y="0" width="8.6" height="10" rx="4.3" fill="#9ccc65" stroke="#2e6b30" stroke-width="0.9"/>
+  </g>
+
+  <!-- pestle -->
+  <g transform="rotate(36 127 94)">
+    <rect x="121" y="68" width="12" height="52" rx="6" fill="#2e6b30" stroke="#155527" stroke-width="1.2"/>
+    <ellipse cx="127" cy="68" rx="6" ry="3.6" fill="#54a24b" stroke="#155527" stroke-width="1"/>
+  </g>
+
+  <!-- mortar -->
+  <path d="M 62 98 h76 a4 4 0 0 1 4 4 a42 30 0 0 1 -84 0 a4 4 0 0 1 4 -4 z" fill="#c5e1a5" stroke="#155527" stroke-width="2.5"/>
+  <rect x="62" y="92.5" width="76" height="9" rx="4.5" fill="#e6f2dd" stroke="#155527" stroke-width="2.2"/>
+  <path d="M 88 130 h24 l-5 12 h-14 z" fill="#9ccc65" stroke="#155527" stroke-width="2.2"/>
+  <rect x="80" y="140" width="40" height="6.5" rx="3.2" fill="#e6f2dd" stroke="#155527" stroke-width="2"/>
+
+  <!-- Rx monogram in bowl -->
+  <text x="100" y="123" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="30" fill="#155527">Rx</text>
+</svg>

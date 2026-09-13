@@ -104,9 +104,9 @@ export function BarList({
             <span className="truncate text-[13px] font-medium text-slate-600">{item.label}</span>
             <span className="text-[13px] font-bold text-slate-800">{item.value}</span>
           </div>
-          <div className="h-2 overflow-hidden rounded-full bg-slate-100">
+          <div className="h-2 overflow-hidden rounded-full bg-paper-100">
             <div
-              className="h-full rounded-full transition-all duration-500"
+              className="h-full rounded-full transition-colors duration-500"
               style={{ width: `${Math.max((item.value / max) * 100, item.value > 0 ? 2.5 : 0)}%`, background: accent }}
             />
           </div>

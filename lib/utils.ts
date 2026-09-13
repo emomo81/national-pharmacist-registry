@@ -15,16 +15,16 @@ export function makeReference(seq: number): string {
 }
 
 export function formatDate(iso?: string): string {
-  if (!iso) return "—";
+  if (!iso) return "Not recorded";
   const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return "—";
+  if (Number.isNaN(d.getTime())) return "Not recorded";
   return d.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
 }
 
 export function formatDateTime(iso?: string): string {
-  if (!iso) return "—";
+  if (!iso) return "Not recorded";
   const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return "—";
+  if (Number.isNaN(d.getTime())) return "Not recorded";
   return d.toLocaleDateString("en-GB", {
     day: "2-digit",
     month: "short",

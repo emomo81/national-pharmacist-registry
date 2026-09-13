@@ -1,9 +1,11 @@
 import type { Config } from "tailwindcss";
 
 /**
- * LPB National Pharmacist Registry — design tokens from the approved UI/UX kit:
- * deep navy chrome (trust, government) + LPB green accents (from the official
- * seal). `brand` = navy, `accent` = green.
+ * LPB National Pharmacist Registry design tokens.
+ * `brand` = navy chrome (trust, government), `accent` = green from the official
+ * LPB seal, `paper` = warm off-white used for page and panel backgrounds.
+ * The visual language is deliberately institutional: flat surfaces, 1px
+ * borders, 2px radii and no decorative shadows.
  */
 const config: Config = {
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./lib/**/*.{ts,tsx}"],
@@ -42,21 +44,14 @@ const config: Config = {
           500: "#c9a227",
           600: "#a6851e",
         },
-      },
-      fontFamily: {
-        sans: ["'Inter Variable'", "system-ui", "-apple-system", "Segoe UI", "sans-serif"],
-      },
-      boxShadow: {
-        card: "0 1px 2px rgba(7,22,39,0.05), 0 10px 28px -14px rgba(7,22,39,0.22)",
-      },
-      keyframes: {
-        "fade-up": {
-          from: { opacity: "0", transform: "translateY(8px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
+        paper: {
+          50: "#fafaf8",
+          100: "#f4f4f1",
+          200: "#e9e9e4",
         },
       },
-      animation: {
-        "fade-up": "fade-up .45s ease-out both",
+      fontFamily: {
+        sans: ["'Public Sans Variable'", "system-ui", "-apple-system", "Segoe UI", "sans-serif"],
       },
     },
   },

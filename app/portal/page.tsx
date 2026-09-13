@@ -53,10 +53,10 @@ function DashboardBody() {
   const statusMeta = APPLICATION_STATUS_META[account.applicationStatus];
 
   const statCards = [
-    { icon: UserCog, tint: "bg-accent-100 text-accent-600", label: "Profile Completed", value: `${metrics.profilePct}%`, href: "/portal/profile" },
-    { icon: FolderOpen, tint: "bg-brand-100 text-brand-600", label: "Credentials Uploaded", value: `${metrics.docsCount} / ${metrics.docsTotal}`, href: "/portal/documents" },
-    { icon: Award, tint: "bg-violet-100 text-violet-600", label: "CPD Trainings", value: String(account.cpd.length), href: "/portal/cpd" },
-    { icon: FileText, tint: "bg-amber-100 text-amber-600", label: "Application Status", value: statusMeta.label, href: "/portal/submit" },
+    { icon: UserCog, tint: "bg-paper-200 text-brand-700", label: "Profile Completed", value: `${metrics.profilePct}%`, href: "/portal/profile" },
+    { icon: FolderOpen, tint: "bg-paper-200 text-brand-700", label: "Credentials Uploaded", value: `${metrics.docsCount} / ${metrics.docsTotal}`, href: "/portal/documents" },
+    { icon: Award, tint: "bg-paper-200 text-brand-700", label: "CPD Trainings", value: String(account.cpd.length), href: "/portal/cpd" },
+    { icon: FileText, tint: "bg-paper-200 text-brand-700", label: "Application Status", value: statusMeta.label, href: "/portal/submit" },
   ];
 
   return (
@@ -84,8 +84,8 @@ function DashboardBody() {
       {/* Stat cards */}
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {statCards.map((c) => (
-          <Link key={c.label} href={c.href} className="card group flex items-center gap-4 p-5 transition hover:-translate-y-0.5 hover:shadow-lg">
-            <span className={cn("flex h-12 w-12 shrink-0 items-center justify-center rounded-xl", c.tint)}>
+          <Link key={c.label} href={c.href} className="card flex items-center gap-4 p-5 transition-colors hover:bg-paper-50">
+            <span className={cn("flex h-12 w-12 shrink-0 items-center justify-center rounded-sm", c.tint)}>
               <c.icon className="h-6 w-6" />
             </span>
             <div className="min-w-0">
@@ -104,9 +104,9 @@ function DashboardBody() {
               <h3 className="font-bold text-brand-950">Registration Progress</h3>
               <span className="text-sm font-extrabold text-accent-600">{metrics.progressPct}%</span>
             </div>
-            <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-slate-100">
+            <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-paper-100">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-accent-400 to-accent-600 transition-all duration-700"
+                className="h-full rounded-full bg-accent-600 transition-colors duration-700"
                 style={{ width: `${metrics.progressPct}%` }}
               />
             </div>
@@ -137,7 +137,7 @@ function DashboardBody() {
                 <Link
                   key={a.label}
                   href={a.href}
-                  className="group flex flex-col items-center gap-2.5 rounded-xl border border-slate-200 px-3 py-5 text-center transition hover:border-brand-300 hover:bg-brand-50/40"
+                  className="group flex flex-col items-center gap-2.5 rounded-sm border border-slate-200 px-3 py-5 text-center transition hover:border-brand-300 hover:bg-brand-50/40"
                 >
                   <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-50 text-brand-600 ring-1 ring-brand-100 transition group-hover:bg-brand-700 group-hover:text-white">
                     <a.icon className="h-5 w-5" />
@@ -171,7 +171,7 @@ function DashboardBody() {
               );
             })}
             {account.activity.length === 0 && (
-              <li className="text-sm text-slate-400">Nothing yet — start with your profile.</li>
+              <li className="text-sm text-slate-400">Nothing yet. Start with your profile.</li>
             )}
           </ol>
         </div>

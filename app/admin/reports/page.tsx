@@ -77,12 +77,12 @@ export default function ReportsPage() {
     <div className="space-y-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-800 text-white">
+          <span className="flex h-10 w-10 items-center justify-center rounded-sm bg-brand-800 text-white">
             <BarChart3 className="h-5 w-5" />
           </span>
           <div>
             <h2 className="font-extrabold tracking-tight text-brand-950">Analytics &amp; Reports</h2>
-            <p className="text-xs text-slate-500">Census period: Jan 2026 — Dec 2026 · live from {total} records</p>
+            <p className="text-xs text-slate-500">Census period: January to December 2026 · live from {total} records</p>
           </div>
         </div>
         {exported && (
@@ -103,7 +103,7 @@ export default function ReportsPage() {
       </div>
 
       <div className="grid items-start gap-5 xl:grid-cols-2">
-        {/* Pharmacists by county — as in the approved analytics mock */}
+        {/* Pharmacists by county, as in the approved analytics mock */}
         <div className="card p-5">
           <h3 className="font-bold text-brand-950">Pharmacists by County</h3>
           <p className="text-xs text-slate-400">Share of registered pharmacists (place of practice)</p>
@@ -113,9 +113,9 @@ export default function ReportsPage() {
               return (
                 <div key={label} className="flex items-center gap-3">
                   <span className="w-28 truncate text-[13px] font-medium text-slate-600">{label}</span>
-                  <div className="h-3.5 flex-1 overflow-hidden rounded-full bg-slate-100">
+                  <div className="h-3.5 flex-1 overflow-hidden rounded-full bg-paper-100">
                     <div
-                      className="h-full rounded-full transition-all duration-500"
+                      className="h-full rounded-full transition-colors duration-500"
                       style={{ width: `${Math.max(pct, 2)}%`, background: COUNTY_COLORS[label] ?? FALLBACK_BAR }}
                     />
                   </div>
@@ -145,7 +145,7 @@ export default function ReportsPage() {
       </div>
 
       <div className="card p-5">
-        <h3 className="font-bold text-brand-950">Registrations per month — 2026</h3>
+        <h3 className="font-bold text-brand-950">Registrations per month, 2026</h3>
         <div className="mt-4">
           <TrendChart points={stats.trend} />
         </div>

@@ -20,14 +20,14 @@ export default function SupportPage() {
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-slate-600">
             Stuck on a step of your registration, or is a document being rejected? Reach out through any channel
-            below — or review the public FAQ, which covers the most common questions pharmacists ask.
+            below, or review the public FAQ, which covers the most common questions pharmacists ask.
           </p>
         </div>
 
         <div className="space-y-3">
           {CONTACTS.map((c) => (
             <div key={c.label} className="card flex items-center gap-4 p-5">
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+              <span className="flex h-11 w-11 items-center justify-center rounded-sm bg-brand-50 text-brand-600">
                 <c.icon className="h-5 w-5" />
               </span>
               <div>
@@ -42,7 +42,7 @@ export default function SupportPage() {
         <div className="card flex items-center justify-between gap-4 p-5">
           <div>
             <p className="font-bold text-brand-950">Frequently asked questions</p>
-            <p className="mt-0.5 text-sm text-slate-500">On the public site — no sign-in needed.</p>
+            <p className="mt-0.5 text-sm text-slate-500">On the public site, no sign-in needed.</p>
           </div>
           <Link href="/#support" className="btn-outline whitespace-nowrap">
             Open FAQ <ArrowRight className="h-4 w-4" />

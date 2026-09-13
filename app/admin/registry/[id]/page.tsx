@@ -26,7 +26,7 @@ import { cn, formatDate, formatDateTime, formatFileSize, fullName } from "@/lib/
 
 function DataRow({ label, value }: { label: string; value?: string | boolean | null }) {
   const display =
-    typeof value === "boolean" ? (value ? "Yes" : "No") : value && String(value).trim() ? String(value) : "—";
+    typeof value === "boolean" ? (value ? "Yes" : "No") : value && String(value).trim() ? String(value) : "Not provided";
   return (
     <div className="grid grid-cols-[38%_62%] gap-2 px-5 py-2.5">
       <dt className="pt-0.5 text-xs font-semibold uppercase tracking-wide text-slate-400">{label}</dt>
@@ -38,10 +38,10 @@ function DataRow({ label, value }: { label: string; value?: string | boolean | n
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="card overflow-hidden">
-      <header className="border-b border-slate-100 bg-slate-50/60 px-5 py-3">
+      <header className="border-b border-slate-200 bg-paper-100/60 px-5 py-3">
         <h3 className="text-sm font-bold text-brand-900">{title}</h3>
       </header>
-      <dl className="divide-y divide-slate-100">{children}</dl>
+      <dl className="divide-y divide-slate-200">{children}</dl>
     </section>
   );
 }
@@ -55,7 +55,7 @@ export default function SubmissionDetailPage() {
   const [busy, setBusy] = useState(false);
 
   const session = typeof window !== "undefined" ? getSession() : null;
-  const actor = session ? `${session.name} — ${session.role}` : "LPB Official";
+  const actor = session ? `${session.name} (${session.role})` : "LPB Official";
 
   useEffect(() => {
     getRegistration(id).then((r) => {
@@ -183,7 +183,7 @@ export default function SubmissionDetailPage() {
             <DataRow label="Category" value={l.category} />
             <DataRow label="Initial registration" value={l.initialRegistrationYear} />
             <DataRow label="License expiry" value={formatDate(l.licenseExpiry)} />
-            <DataRow label="Registered abroad" value={l.registeredElsewhere ? `Yes — ${l.otherCountries ?? ""}` : "No"} />
+            <DataRow label="Registered abroad" value={l.registeredElsewhere ? `Yes (${l.otherCountries ?? ""})` : "No"} />
             <DataRow label="Good standing declared" value={l.inGoodStanding} />
           </Section>
 
@@ -206,7 +206,7 @@ export default function SubmissionDetailPage() {
                       // eslint-disable-next-line @next/next/no-img-element
                       <img src={item.doc.dataUrl} alt={item.label} className="h-12 w-12 rounded-md border border-slate-200 object-cover" />
                     ) : (
-                      <span className="flex h-12 w-12 items-center justify-center rounded-md bg-slate-100 text-slate-400">
+                      <span className="flex h-12 w-12 items-center justify-center rounded-md bg-paper-100 text-slate-400">
                         {item.doc.type.startsWith("image/") ? <ImageIcon className="h-5 w-5" /> : <FileText className="h-5 w-5" />}
                       </span>
                     )}
@@ -268,13 +268,13 @@ export default function SubmissionDetailPage() {
             <h3 className="flex items-center gap-2 text-sm font-bold text-brand-950">
               <FileText className="h-4 w-4 text-brand-600" /> Internal notes
             </h3>
-            <p className="mt-1 text-xs text-slate-400">Visible to LPB staff only — never to the registrant.</p>
+            <p className="mt-1 text-xs text-slate-400">Visible to LPB staff only, never to the registrant.</p>
             <textarea
               value={note}
               onChange={(e) => { setNote(e.target.value); setNoteDirty(true); }}
               rows={5}
               className="input mt-3 resize-y"
-              placeholder="e.g. License expired — registrant contacted to renew before verification."
+              placeholder="e.g. License expired; registrant contacted to renew before verification."
             />
             <button type="button" onClick={saveNote} disabled={!noteDirty || busy} className="btn-dark mt-3 w-full">
               <Save className="h-4 w-4" /> Save note

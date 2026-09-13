@@ -3,7 +3,7 @@ import { AdminShell } from "@/components/admin/shell";
 
 export const metadata: Metadata = {
   title: "LPB Official Portal",
-  description: "Restricted workspace for Liberia Pharmacy Board officials — 2026 Pharmacist Census data.",
+  description: "Restricted workspace for Liberia Pharmacy Board officials: 2026 Pharmacist Census data.",
   robots: { index: false, follow: false },
 };
 

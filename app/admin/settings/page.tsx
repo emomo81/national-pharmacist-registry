@@ -8,9 +8,9 @@ import { CSV_COLUMNS } from "@/lib/csv";
 import type { SessionUser } from "@/lib/types";
 
 const ROLES = [
-  { name: "Registrar & CEO", email: "admin@lpb.gov.lr", scope: "Full access — verify, flag, create & export records" },
+  { name: "Registrar & CEO", email: "admin@lpb.gov.lr", scope: "Full access: verify, flag, create & export records" },
   { name: "Data & Records Officer", email: "data.officer@lpb.gov.lr", scope: "Review queue, annotate and export records" },
-  { name: "Viewer (readonly)", email: "— planned for Phase 2 —", scope: "Dashboards and reports only" },
+  { name: "Viewer (readonly)", email: "Planned for Phase 2", scope: "Dashboards and reports only" },
 ];
 
 export default function SettingsPage() {
@@ -58,7 +58,7 @@ export default function SettingsPage() {
           <Users2 className="h-4 w-4 text-brand-600" /> Portal roles
         </h2>
         <p className="mt-1 text-sm text-slate-500">Demo accounts for this build; Phase 2 enforces these roles server-side.</p>
-        <ul className="mt-4 divide-y divide-slate-100">
+        <ul className="mt-4 divide-y divide-slate-200">
           {ROLES.map((r) => (
             <li key={r.name} className="flex flex-wrap items-center justify-between gap-2 py-3">
               <div>
@@ -73,24 +73,24 @@ export default function SettingsPage() {
 
       {/* Data dictionary */}
       <div className="card overflow-hidden">
-        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4">
+        <div className="flex items-center justify-between border-b border-slate-200 px-6 py-4">
           <div>
             <h2 className="flex items-center gap-2 font-extrabold tracking-tight text-brand-950">
               <Table2 className="h-4 w-4 text-brand-600" /> Data dictionary
             </h2>
-            <p className="mt-0.5 text-xs text-slate-500">{CSV_COLUMNS.length} fields captured per pharmacist — future PostgreSQL columns</p>
+            <p className="mt-0.5 text-xs text-slate-500">{CSV_COLUMNS.length} fields captured per pharmacist; future PostgreSQL columns</p>
           </div>
         </div>
         <div className="max-h-[340px] overflow-y-auto">
           <table className="w-full min-w-[480px]">
-            <thead className="sticky top-0 bg-slate-50">
+            <thead className="sticky top-0 bg-paper-100">
               <tr>
                 <th className="table-th">#</th>
                 <th className="table-th">Column</th>
                 <th className="table-th">Description</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100">
+            <tbody className="divide-y divide-slate-200">
               {CSV_COLUMNS.map((col, i) => (
                 <tr key={col.key}>
                   <td className="table-td text-xs text-slate-400">{i + 1}</td>
@@ -119,7 +119,7 @@ export default function SettingsPage() {
       </div>
 
       {/* Phase 2 */}
-      <div className="card border-brand-200 bg-gradient-to-br from-brand-50/60 to-white p-6">
+      <div className="card bg-paper-100 p-6">
         <h2 className="flex items-center gap-2 font-extrabold tracking-tight text-brand-950">
           <ShieldCheck className="h-4 w-4 text-brand-600" /> Phase 2 ready
         </h2>

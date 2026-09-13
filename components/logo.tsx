@@ -3,11 +3,11 @@ import { cn } from "@/lib/utils";
 /**
  * Single source for the LPB seal.
  * Swap-in path for the official asset: overwrite public/lpb-logo.svg (or point
- * `src` below at your PNG) — every screen updates automatically.
+ * `src` below at your PNG), every screen updates automatically.
  */
 interface LogoProps {
   size?: number;
-  /** circular white backing — required on dark/navy backgrounds */
+  /** circular white backing, required on dark/navy backgrounds */
   badge?: boolean;
   className?: string;
 }
@@ -17,7 +17,7 @@ export function LpbLogo({ size = 44, badge = false, className }: LogoProps) {
     <span
       className={cn(
         "inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full",
-        badge && "bg-white p-[3px] ring-2 ring-white/25 shadow-sm",
+        badge && "bg-white p-[3px] ring-2 ring-white/25",
         className
       )}
       style={{ width: size, height: size }}

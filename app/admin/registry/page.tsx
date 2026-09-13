@@ -114,7 +114,7 @@ export default function SubmissionsPage() {
       <div className="card overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full min-w-[860px]">
-            <thead className="border-b border-slate-100 bg-slate-50/70">
+            <thead className="border-b border-slate-200 bg-paper-100/70">
               <tr>
                 <th className="table-th">Reference</th>
                 <th className="table-th">Pharmacist</th>
@@ -126,13 +126,13 @@ export default function SubmissionsPage() {
                 <th className="table-th sr-only">Open</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100">
+            <tbody className="divide-y divide-slate-200">
               {loading ? (
                 [...Array(6)].map((_, i) => (
                   <tr key={i} className="animate-pulse">
                     {[...Array(8)].map((_, j) => (
                       <td key={j} className="table-td">
-                        <div className="h-4 rounded bg-slate-100" />
+                        <div className="h-4 rounded bg-paper-100" />
                       </td>
                     ))}
                   </tr>
@@ -179,7 +179,7 @@ export default function SubmissionsPage() {
         </div>
 
         {/* Pagination */}
-        <div className="flex items-center justify-between border-t border-slate-100 px-4 py-3 text-xs text-slate-500">
+        <div className="flex items-center justify-between border-t border-slate-200 px-4 py-3 text-xs text-slate-500">
           <p>
             Showing <strong className="text-slate-700">{items.length === 0 ? 0 : (page - 1) * PAGE_SIZE + 1}–{Math.min(page * PAGE_SIZE, items.length)}</strong> of{" "}
             <strong className="text-slate-700">{items.length}</strong> records

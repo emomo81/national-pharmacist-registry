@@ -72,17 +72,17 @@ function SubmitBody() {
   function downloadReceipt() {
     if (!account) return;
     const lines = [
-      "LIBERIA PHARMACY BOARD — NATIONAL PHARMACIST REGISTRY",
+      "LIBERIA PHARMACY BOARD, NATIONAL PHARMACIST REGISTRY",
       "2026 National Pharmacist Census · Submission Receipt",
       "======================================================",
-      `Registry reference : ${account.registryRef ?? "—"}`,
+      `Registry reference : ${account.registryRef ?? "not yet issued"}`,
       `Name               : ${[account.personal.title, account.personal.firstName, account.personal.middleName, account.personal.surname].filter(Boolean).join(" ")}`,
-      `LPB license no.    : ${account.licensure.lpbNumber ?? "—"}`,
+      `LPB license no.    : ${account.licensure.lpbNumber ?? "not provided"}`,
       `Email              : ${account.email}`,
-      `Phone              : ${account.contact.phone ?? "—"}`,
-      `County             : ${account.contact.county ?? "—"}`,
+      `Phone              : ${account.contact.phone ?? "not provided"}`,
+      `County             : ${account.contact.county ?? "not provided"}`,
       `Submitted          : ${formatDateTime(account.submittedAt)}`,
-      `Status             : Submitted — awaiting LPB review`,
+      `Status             : Submitted, awaiting LPB review`,
       "======================================================",
       "Keep this receipt. Quote your registry reference at license",
       "renewal and in any correspondence with the Board.",
@@ -103,7 +103,7 @@ function SubmitBody() {
     return (
       <div className="mx-auto max-w-2xl space-y-5">
         <div className="card overflow-hidden text-center">
-          <div className="hero-fade px-8 py-10 text-white">
+          <div className="band-navy px-8 py-10 text-white">
             <span className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-white/15 ring-8 ring-white/10">
               <CheckCircle2 className="h-11 w-11 text-accent-300" />
             </span>
@@ -116,7 +116,7 @@ function SubmitBody() {
             </p>
           </div>
           <div className="px-8 py-7">
-            <div className="rounded-2xl border-2 border-dashed border-accent-300 bg-accent-50/50 px-6 py-5">
+            <div className="rounded-sm border-2 border-dashed border-accent-300 bg-accent-50/50 px-6 py-5">
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent-700">Registry reference</p>
               <p className="mt-1 font-mono text-3xl font-extrabold tracking-wide text-brand-950">{account.registryRef}</p>
               <p className="mt-1 text-xs text-slate-500">Submitted {formatDateTime(account.submittedAt)}</p>
@@ -170,7 +170,7 @@ function SubmitBody() {
             <li
               key={c.key}
               className={cn(
-                "flex items-center justify-between gap-3 rounded-xl border px-4 py-3.5",
+                "flex items-center justify-between gap-3 rounded-sm border px-4 py-3.5",
                 c.done ? "border-accent-200 bg-accent-50/50" : "border-slate-200 bg-white"
               )}
             >
@@ -190,7 +190,7 @@ function SubmitBody() {
         </ul>
 
         {metrics.progressPct < 100 && (
-          <div className="mt-5 flex items-start gap-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3">
+          <div className="mt-5 flex items-start gap-3 rounded-sm border border-amber-200 bg-amber-50 px-4 py-3">
             <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
             <p className="text-sm text-amber-800">
               Complete the outstanding items to enable submission.{" "}

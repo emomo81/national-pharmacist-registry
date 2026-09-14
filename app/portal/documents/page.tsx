@@ -30,12 +30,12 @@ function DocumentsBody() {
 
   return (
     <div className="space-y-5">
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-brand-200 bg-brand-50 p-4">
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-sm border border-brand-200 bg-brand-50 p-4">
         <div className="flex items-start gap-3">
           <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-brand-700" />
           <p className="text-sm text-brand-900">
             Upload clear, legible scans or photos (JPG, PNG or PDF · max 5 MB). LPB verification officers compare
-            these against your profile — blurred or mismatched documents will delay verification.
+            these against your profile. Blurred or mismatched documents will delay verification.
           </p>
         </div>
         <span className="chip bg-white font-bold text-brand-800 ring-1 ring-brand-200">{count} / {DOCUMENT_SLOTS.length} uploaded</span>

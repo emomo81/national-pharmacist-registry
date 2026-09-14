@@ -69,12 +69,12 @@ export function FileUpload({ label, description, required, doc, onChange, error,
           {required && <span className="ml-0.5 text-red-500">*</span>}
           <span className="label-hint"> · {description}</span>
         </label>
-        <div className={cn("flex items-center gap-3 rounded-xl border bg-white p-3", shownError ? "border-red-300" : "border-brand-200 ring-1 ring-brand-100")}>
+        <div className={cn("flex items-center gap-3 rounded-sm border bg-white p-3", shownError ? "border-red-300" : "border-brand-200 ring-1 ring-brand-100")}>
           {doc.dataUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={doc.dataUrl} alt={doc.name} className="h-14 w-14 shrink-0 rounded-lg border border-slate-200 object-cover" />
           ) : (
-            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-500">
+            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-paper-100 text-slate-500">
               {doc.type.startsWith("image/") ? <ImageIcon className="h-6 w-6" /> : <FileText className="h-6 w-6" />}
             </span>
           )}
@@ -87,7 +87,7 @@ export function FileUpload({ label, description, required, doc, onChange, error,
             </p>
             {!doc.dataUrl && (
               <p className="mt-0.5 text-[11px] text-amber-600">
-                Stored as reference in this demo — re-attach on this device to enable preview.
+                Stored as reference in this demo; re-attach on this device to enable preview.
               </p>
             )}
           </div>
@@ -136,7 +136,7 @@ export function FileUpload({ label, description, required, doc, onChange, error,
           handleFile(e.dataTransfer.files?.[0]);
         }}
         className={cn(
-          "flex w-full items-center gap-4 rounded-xl border-2 border-dashed px-4 py-5 text-left transition",
+          "flex w-full items-center gap-4 rounded-sm border-2 border-dashed px-4 py-5 text-left transition",
           shownError
             ? "border-red-300 bg-red-50/40"
             : dragOver

@@ -9,7 +9,7 @@ import type { Registration } from "@/lib/types";
 import { STATUS_META } from "@/lib/constants";
 import { cn, formatDate, fullName, initials } from "@/lib/utils";
 
-const AVATAR_TINTS = ["bg-brand-600", "bg-accent-500", "bg-violet-500", "bg-rose-500", "bg-amber-500", "bg-sky-500"];
+const AVATAR_TINTS = ["bg-brand-700"];
 
 export default function VerifyCredentialsPage() {
   const [records, setRecords] = useState<Registration[]>([]);
@@ -30,8 +30,8 @@ export default function VerifyCredentialsPage() {
 
   async function act(record: Registration, status: "verified" | "flagged") {
     const session = getSession();
-    const actor = session ? `${session.name} — ${session.role}` : "LPB Official";
-    if (!window.confirm(`${status === "verified" ? "Verify" : "Flag"} ${record.reference} — ${fullName(record)}?`)) return;
+    const actor = session ? `${session.name} (${session.role})` : "LPB Official";
+    if (!window.confirm(`${status === "verified" ? "Verify" : "Flag"} ${record.reference} (${fullName(record)})?`)) return;
     setBusyId(record.id);
     await updateRegistrationStatus(record.id, status, actor);
     setDone((d) => ({ ...d, [record.id]: status }));
@@ -47,7 +47,7 @@ export default function VerifyCredentialsPage() {
         <div>
           <h2 className="font-extrabold tracking-tight text-brand-950">Verification queue</h2>
           <p className="text-sm text-slate-500">
-            Records awaiting LPB verification — newest first. Open a record to inspect credentials before deciding.
+            Records awaiting LPB verification, newest first. Open a record to inspect credentials before deciding.
           </p>
         </div>
         <span className="chip bg-amber-100 text-amber-800 ring-1 ring-amber-200">
@@ -56,20 +56,20 @@ export default function VerifyCredentialsPage() {
       </div>
 
       {Object.keys(done).length > 0 && (
-        <p className="flex items-center gap-2 rounded-xl border border-accent-200 bg-accent-50 px-4 py-3 text-sm font-semibold text-accent-800">
+        <p className="flex items-center gap-2 rounded-sm border border-accent-200 bg-accent-50 px-4 py-3 text-sm font-semibold text-accent-800">
           <CheckCircle2 className="h-4 w-4" /> {Object.keys(done).length} record{Object.keys(done).length > 1 ? "s" : ""} processed this session.
         </p>
       )}
 
       <div className="card overflow-hidden">
         {loading ? (
-          <div className="divide-y divide-slate-100">
+          <div className="divide-y divide-slate-200">
             {[...Array(5)].map((_, i) => (
               <div key={i} className="flex animate-pulse items-center gap-4 px-5 py-4">
-                <div className="h-10 w-10 rounded-full bg-slate-100" />
+                <div className="h-10 w-10 rounded-full bg-paper-100" />
                 <div className="flex-1 space-y-2">
-                  <div className="h-4 w-1/3 rounded bg-slate-100" />
-                  <div className="h-3 w-1/2 rounded bg-slate-100" />
+                  <div className="h-4 w-1/3 rounded bg-paper-100" />
+                  <div className="h-3 w-1/2 rounded bg-paper-100" />
                 </div>
               </div>
             ))}
@@ -84,7 +84,7 @@ export default function VerifyCredentialsPage() {
             </Link>
           </div>
         ) : (
-          <ul className="divide-y divide-slate-100">
+          <ul className="divide-y divide-slate-200">
             {records.map((r, i) => (
               <li key={r.id} className="flex flex-wrap items-center gap-4 px-5 py-4 transition hover:bg-brand-50/30">
                 <span className={cn("flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-sm font-extrabold text-white", AVATAR_TINTS[i % AVATAR_TINTS.length])}>

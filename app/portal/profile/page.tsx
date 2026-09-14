@@ -122,7 +122,7 @@ function ProfileBody() {
               className={cn(
                 "flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-bold transition",
                 i === tab
-                  ? "border-brand-700 bg-brand-800 text-white shadow"
+                  ? "border-brand-700 bg-brand-800 text-white"
                   : i < tab
                     ? "border-accent-200 bg-accent-50 text-accent-800"
                     : "border-slate-200 bg-white text-slate-400"
@@ -131,7 +131,7 @@ function ProfileBody() {
               <span
                 className={cn(
                   "flex h-5 w-5 items-center justify-center rounded-full text-[10px]",
-                  i === tab ? "bg-white/20 text-white" : i < tab ? "bg-accent-500 text-white" : "bg-slate-100 text-slate-400"
+                  i === tab ? "bg-white/20 text-white" : i < tab ? "bg-accent-500 text-white" : "bg-paper-100 text-slate-400"
                 )}
               >
                 {i < tab ? <Check className="h-3 w-3" /> : i + 1}
@@ -144,9 +144,9 @@ function ProfileBody() {
 
       <div className="card p-5 sm:p-7">
         {tab === 0 && (
-          <div className="animate-fade-up space-y-8">
+          <div className="space-y-8">
             <section>
-              <h3 className="border-b border-slate-100 pb-3 text-sm font-extrabold uppercase tracking-wider text-brand-800">
+              <h3 className="border-b border-slate-200 pb-3 text-sm font-extrabold uppercase tracking-wider text-brand-800">
                 A · Full legal name
               </h3>
               <div className="mt-5 grid gap-5 sm:grid-cols-3">
@@ -174,7 +174,7 @@ function ProfileBody() {
             </section>
 
             <section>
-              <h3 className="border-b border-slate-100 pb-3 text-sm font-extrabold uppercase tracking-wider text-brand-800">
+              <h3 className="border-b border-slate-200 pb-3 text-sm font-extrabold uppercase tracking-wider text-brand-800">
                 B · Date and place of birth
               </h3>
               <div className="mt-5 grid gap-5 sm:grid-cols-3">
@@ -193,7 +193,7 @@ function ProfileBody() {
             </section>
 
             <section>
-              <h3 className="border-b border-slate-100 pb-3 text-sm font-extrabold uppercase tracking-wider text-brand-800">
+              <h3 className="border-b border-slate-200 pb-3 text-sm font-extrabold uppercase tracking-wider text-brand-800">
                 C · Identity &amp; status
               </h3>
               <div className="mt-5 grid gap-5 sm:grid-cols-3">
@@ -221,7 +221,7 @@ function ProfileBody() {
         )}
 
         {tab === 1 && (
-          <div className="animate-fade-up grid gap-5 sm:grid-cols-2">
+          <div className="grid gap-5 sm:grid-cols-2">
             <Field label="Email Address" name="email" required error={err("contact.email")}>
               <TextInput id="email" type="email" value={c.email ?? ""} onChange={(e) => patch("contact", { email: e.target.value })} invalid={!!err("contact.email")} placeholder="you@example.com" />
             </Field>
@@ -249,8 +249,8 @@ function ProfileBody() {
         )}
 
         {tab === 2 && (
-          <div className="animate-fade-up">
-            <p className="mb-6 rounded-xl border border-brand-100 bg-brand-50/60 px-4 py-3 text-sm text-brand-900">
+          <div className="">
+            <p className="mb-6 rounded-sm border border-brand-100 bg-brand-50/60 px-4 py-3 text-sm text-brand-900">
               Enter your registration details exactly as they appear on your LPB license certificate.
             </p>
             <div className="grid gap-5 sm:grid-cols-2">
@@ -293,7 +293,7 @@ function ProfileBody() {
                   <TextInput id="otherCountries" value={l.otherCountries ?? ""} onChange={(e) => patch("licensure", { otherCountries: e.target.value })} placeholder="e.g. Ghana, United States" />
                 </Field>
               )}
-              <div className="sm:col-span-2 rounded-xl border border-slate-200 bg-slate-50/60 p-4">
+              <div className="sm:col-span-2 rounded-sm border border-slate-200 bg-paper-100/60 p-4">
                 <label className="flex cursor-pointer items-start gap-3">
                   <input
                     type="checkbox"
@@ -313,13 +313,13 @@ function ProfileBody() {
         )}
 
         {tab === 3 && (
-          <div className="animate-fade-up">
+          <div className="">
             <ReviewTab form={form} onEdit={setTab} progress={getProgress(account)} onContinue={() => router.push("/portal/submit")} />
           </div>
         )}
 
         {tab < 3 && (
-          <footer className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 pt-6">
+          <footer className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 pt-6">
             <button
               type="button"
               onClick={() => setTab(Math.max(tab - 1, 0))}
@@ -367,19 +367,19 @@ function ReviewTab({
   const c = form.contact;
   const l = form.licensure;
   const section = (title: string, tab: number, rows: Array<[string, string | undefined | boolean]>) => (
-    <section className="overflow-hidden rounded-xl border border-slate-200">
-      <header className="flex items-center justify-between border-b border-slate-100 bg-slate-50/70 px-5 py-3">
+    <section className="overflow-hidden rounded-sm border border-slate-200">
+      <header className="flex items-center justify-between border-b border-slate-200 bg-paper-100/70 px-5 py-3">
         <h3 className="text-sm font-bold text-brand-900">{title}</h3>
         <button type="button" onClick={() => onEdit(tab)} className="btn-ghost px-2.5 py-1.5 text-xs">
           <Pencil className="h-3.5 w-3.5" /> Edit
         </button>
       </header>
-      <dl className="divide-y divide-slate-100">
+      <dl className="divide-y divide-slate-200">
         {rows.map(([label, value]) => (
           <div key={label} className="grid grid-cols-[40%_60%] gap-2 px-5 py-2.5">
             <dt className="pt-0.5 text-xs font-semibold uppercase tracking-wide text-slate-400">{label}</dt>
             <dd className="break-words text-sm font-medium text-slate-800">
-              {typeof value === "boolean" ? (value ? "Yes" : "No") : value && value.trim() ? value : "—"}
+              {typeof value === "boolean" ? (value ? "Yes" : "No") : value && value.trim() ? value : "Not provided"}
             </dd>
           </div>
         ))}
@@ -412,11 +412,11 @@ function ReviewTab({
         ["Category", l.category],
         ["Initial registration", l.initialRegistrationYear],
         ["License expiry", formatDate(l.licenseExpiry)],
-        ["Registered abroad", l.registeredElsewhere ? `Yes — ${l.otherCountries ?? ""}` : "No"],
+        ["Registered abroad", l.registeredElsewhere ? `Yes (${l.otherCountries ?? ""})` : "No"],
         ["Good standing", Boolean(l.inGoodStanding)],
       ])}
 
-      <div className="rounded-xl border border-brand-100 bg-brand-50/50 px-5 py-4">
+      <div className="rounded-sm border border-brand-100 bg-brand-50/50 px-5 py-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <p className="text-sm font-bold text-brand-950">
@@ -425,7 +425,7 @@ function ReviewTab({
             <p className="mt-0.5 text-xs text-slate-500">
               {progress.progressPct < 100
                 ? "Add qualifications and required documents to reach 100% and submit."
-                : "Everything is in place — you may submit your application."}
+                : "Everything is in place. You may submit your application."}
             </p>
           </div>
           <button type="button" onClick={onContinue} className="btn-accent">

@@ -7,7 +7,7 @@ import { makeReference } from "./utils";
  * ---------------------------------------------------------------
  * Everything in the app talks to lib/api.ts, never to this module directly.
  * In Phase 2 this implementation is replaced by the Node.js + PostgreSQL
- * backend (see README § "Phase 2 — database"), with zero UI changes.
+ * backend (see README, "Phase 2: database"), with zero UI changes.
  */
 
 const KEY = "lpb_registry_records_v1";

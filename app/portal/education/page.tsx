@@ -68,7 +68,7 @@ function EducationBody() {
           )}
         </div>
         {open ? (
-          <div className="mt-4 space-y-4 animate-fade-up">
+          <div className="mt-4 space-y-4">
             <Field label="Degree Type" name="degreeType" required error={errors.degreeType}>
               <SelectInput id="degreeType" value={form.degreeType} onChange={(e) => setForm({ ...form, degreeType: e.target.value })} invalid={!!errors.degreeType} placeholder="Select degree type">
                 {QUALIFICATIONS.map((q) => <option key={q} value={q}>{q}</option>)}
@@ -85,7 +85,7 @@ function EducationBody() {
                 {YEARS.map((y) => <option key={y} value={y}>{y}</option>)}
               </SelectInput>
             </Field>
-            <Field label="Certificate file name" name="certificateName" hint="optional — e.g. bpharm.pdf">
+            <Field label="Certificate file name" name="certificateName" hint="optional, e.g. bpharm.pdf">
               <TextInput id="certificateName" value={form.certificateName} onChange={(e) => setForm({ ...form, certificateName: e.target.value })} placeholder="certificate.pdf" />
             </Field>
             <div className="flex gap-2 pt-1">
@@ -98,14 +98,14 @@ function EducationBody() {
         ) : (
           <p className="mt-3 text-sm leading-relaxed text-slate-500">
             Record each pharmacy-related qualification. Attach the matching certificate on the{" "}
-            <strong className="text-slate-700">Documents</strong> page — LPB verification compares the two.
+            <strong className="text-slate-700">Documents</strong> page; LPB verification compares the two.
           </p>
         )}
       </div>
 
       {/* List */}
       <div className="card overflow-hidden">
-        <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
+        <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
           <div>
             <h3 className="font-bold text-brand-950">My Qualifications</h3>
             <p className="text-xs text-slate-400">{account.qualifications.length} on record</p>
@@ -113,13 +113,13 @@ function EducationBody() {
         </div>
         {account.qualifications.length === 0 ? (
           <p className="px-5 py-12 text-center text-sm text-slate-400">
-            No qualifications yet — add your pharmacy degree to continue.
+            No qualifications yet. Add your pharmacy degree to continue.
           </p>
         ) : (
-          <ul className="divide-y divide-slate-100">
+          <ul className="divide-y divide-slate-200">
             {account.qualifications.map((q) => (
-              <li key={q.id} className="flex items-center gap-4 px-5 py-4 transition hover:bg-slate-50/60">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent-50 text-accent-600">
+              <li key={q.id} className="flex items-center gap-4 px-5 py-4 transition hover:bg-paper-100/60">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-accent-50 text-accent-600">
                   <GraduationCap className="h-5 w-5" />
                 </span>
                 <div className="min-w-0 flex-1">

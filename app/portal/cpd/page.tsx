@@ -58,13 +58,13 @@ function CpdBody() {
     <div className="grid items-start gap-5 xl:grid-cols-[380px_1fr]">
       <div className="space-y-4">
         <div className="card flex items-center gap-4 p-5">
-          <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-100 text-violet-600">
+          <span className="flex h-12 w-12 items-center justify-center rounded-sm bg-accent-100 text-accent-700">
             <Award className="h-6 w-6" />
           </span>
           <div>
             <p className="text-2xl font-extrabold tracking-tight text-brand-950">{totalHours} hrs</p>
             <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
-              CPD hours since {account.cpd.length ? Math.min(...account.cpd.map((x) => Number(x.year) || 2026)) : "—"}
+              CPD hours since {account.cpd.length ? Math.min(...account.cpd.map((x) => Number(x.year) || 2026)) : "registration"}
             </p>
           </div>
         </div>
@@ -79,7 +79,7 @@ function CpdBody() {
             )}
           </div>
           {open ? (
-            <div className="mt-4 space-y-4 animate-fade-up">
+            <div className="mt-4 space-y-4">
               <Field label="Training title" name="title" required error={errors.title}>
                 <TextInput id="title" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} invalid={!!errors.title} placeholder="e.g. Antimicrobial Stewardship" />
               </Field>
@@ -105,7 +105,7 @@ function CpdBody() {
             </div>
           ) : (
             <p className="mt-3 text-sm leading-relaxed text-slate-500">
-              Continuing Professional Development keeps your license strong — log courses, webinars and
+              Continuing Professional Development keeps your license strong: log courses, webinars and
               conferences here.
             </p>
           )}
@@ -113,17 +113,17 @@ function CpdBody() {
       </div>
 
       <div className="card overflow-hidden">
-        <div className="border-b border-slate-100 px-5 py-4">
+        <div className="border-b border-slate-200 px-5 py-4">
           <h3 className="font-bold text-brand-950">CPD Record</h3>
           <p className="text-xs text-slate-400">{account.cpd.length} trainings logged</p>
         </div>
         {account.cpd.length === 0 ? (
-          <p className="px-5 py-12 text-center text-sm text-slate-400">No CPD trainings yet — log your first course.</p>
+          <p className="px-5 py-12 text-center text-sm text-slate-400">No CPD trainings yet. Log your first course.</p>
         ) : (
-          <ul className="divide-y divide-slate-100">
+          <ul className="divide-y divide-slate-200">
             {account.cpd.map((entry) => (
-              <li key={entry.id} className="flex items-center gap-4 px-5 py-4 transition hover:bg-slate-50/60">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-violet-600">
+              <li key={entry.id} className="flex items-center gap-4 px-5 py-4 transition hover:bg-paper-100/60">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-accent-50 text-accent-700">
                   <Award className="h-5 w-5" />
                 </span>
                 <div className="min-w-0 flex-1">

@@ -88,10 +88,10 @@ export const APPLICATION_STATUS_META: Record<
   ApplicationStatus,
   { label: string; chip: string; dot: string }
 > = {
-  not_started: { label: "Not started", chip: "bg-slate-100 text-slate-600 ring-1 ring-slate-200", dot: "bg-slate-400" },
-  in_progress: { label: "In progress", chip: "bg-sky-100 text-sky-800 ring-1 ring-sky-200", dot: "bg-sky-500" },
-  submitted: { label: "Submitted", chip: "bg-amber-100 text-amber-800 ring-1 ring-amber-200", dot: "bg-amber-500" },
-  under_review: { label: "Under review", chip: "bg-violet-100 text-violet-800 ring-1 ring-violet-200", dot: "bg-violet-500" },
+  not_started: { label: "Not started", chip: "bg-paper-100 text-slate-600 ring-1 ring-slate-200", dot: "bg-slate-400" },
+  in_progress: { label: "In progress", chip: "bg-paper-200 text-slate-700 border border-slate-400", dot: "bg-slate-500" },
+  submitted: { label: "Submitted", chip: "bg-amber-50 text-amber-900 border border-amber-400", dot: "bg-amber-500" },
+  under_review: { label: "Under review", chip: "bg-brand-50 text-brand-900 border border-brand-300", dot: "bg-brand-500" },
   verified: { label: "Verified", chip: "bg-accent-100 text-accent-800 ring-1 ring-accent-200", dot: "bg-accent-600" },
   flagged: { label: "Action needed", chip: "bg-red-100 text-red-800 ring-1 ring-red-200", dot: "bg-red-500" },
 };
@@ -99,7 +99,7 @@ export const APPLICATION_STATUS_META: Record<
 export interface PharmacistAccount {
   id: string;
   email: string;
-  password: string; // DEMO ONLY — hashed server-side in Phase 2
+  password: string; // DEMO ONLY, hashed server-side in Phase 2
   createdAt: string;
   personal: Partial<PortalPersonal>;
   contact: Partial<PortalContact>;

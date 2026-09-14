@@ -1,7 +1,7 @@
 import type { SessionUser } from "./types";
 
 /**
- * PHASE-1 AUTH — demo credentials for the LPB Official Portal.
+ * PHASE-1 AUTH: demo credentials for the LPB Official Portal.
  * Phase 2 replaces this with server-side auth (hashed passwords, sessions/JWT,
  * role-based access) against the PostgreSQL `staff_users` table.
  */

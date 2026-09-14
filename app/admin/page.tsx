@@ -23,14 +23,7 @@ import { STATUS_META } from "@/lib/constants";
 import { DonutChart } from "@/components/admin/charts";
 import { cn, formatDate, formatDateTime, formatFileSize, fullName, initials, percent } from "@/lib/utils";
 
-const AVATAR_TINTS = [
-  "bg-brand-600",
-  "bg-accent-500",
-  "bg-violet-500",
-  "bg-rose-500",
-  "bg-amber-500",
-  "bg-sky-500",
-];
+const AVATAR_TINTS = ["bg-brand-700"];
 
 function KpiCard({
   icon: Icon,
@@ -47,7 +40,7 @@ function KpiCard({
 }) {
   return (
     <div className="card p-5">
-      <span className={cn("flex h-12 w-12 items-center justify-center rounded-xl", tint)}>
+      <span className={cn("flex h-12 w-12 items-center justify-center rounded-sm", tint)}>
         <Icon className="h-6 w-6" />
       </span>
       <p className="mt-4 truncate text-[13px] font-semibold text-slate-500">{label}</p>
@@ -107,32 +100,31 @@ export default function AdminDashboard() {
   return (
     <div className="space-y-5">
       {/* Hero banner */}
-      <div className="relative overflow-hidden rounded-2xl bg-brand-950 text-white shadow-card">
+      <div className="relative overflow-hidden rounded-sm bg-brand-950 text-white">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/assets/admin-banner.jpg"
           alt=""
           className="absolute inset-y-0 right-0 hidden h-full w-[46%] object-cover object-top sm:block"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-950 via-brand-950/95 to-brand-950/30 sm:via-brand-950/80" />
-        <div className="bg-grid absolute inset-0 opacity-40" />
+        <div className="absolute inset-0 bg-brand-950/85" />
         <div className="relative px-6 py-8 sm:px-8 sm:py-10 lg:px-10">
           <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-accent-300">Liberia Pharmacy Board</p>
           <h2 className="mt-3 max-w-lg text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
             National Pharmacist Registry and Credential Database
           </h2>
           <p className="mt-3 text-sm font-semibold tracking-wide text-white/70">
-            Register · Verify · Plan · Build a Stronger Pharmacy Workforce
+            The official record of Liberia&rsquo;s pharmacy workforce
           </p>
         </div>
       </div>
 
       {/* KPI cards */}
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <KpiCard icon={Users} tint="bg-brand-100 text-brand-700" label="Total Registered Pharmacists" value={stats.total} trend="+12%" />
-        <KpiCard icon={BadgeCheck} tint="bg-accent-100 text-accent-600" label="Active Licenses" value={stats.byStatus.verified} trend="+10%" />
-        <KpiCard icon={CircleSlash} tint="bg-amber-100 text-amber-600" label="Inactive / Suspended" value={stats.byStatus.submitted + stats.byStatus.flagged} trend="+5%" />
-        <KpiCard icon={FileClock} tint="bg-violet-100 text-violet-600" label="Pending Verification" value={stats.byStatus.submitted + stats.byStatus.under_review} trend="+8%" />
+        <KpiCard icon={Users} tint="bg-paper-200 text-brand-700" label="Total Registered Pharmacists" value={stats.total} trend="+12%" />
+        <KpiCard icon={BadgeCheck} tint="bg-paper-200 text-brand-700" label="Active Licenses" value={stats.byStatus.verified} trend="+10%" />
+        <KpiCard icon={CircleSlash} tint="bg-paper-200 text-brand-700" label="Inactive / Suspended" value={stats.byStatus.submitted + stats.byStatus.flagged} trend="+5%" />
+        <KpiCard icon={FileClock} tint="bg-paper-200 text-brand-700" label="Pending Verification" value={stats.byStatus.submitted + stats.byStatus.under_review} trend="+8%" />
       </div>
 
       <div className="grid items-start gap-5 xl:grid-cols-[1fr_300px]">
@@ -147,7 +139,7 @@ export default function AdminDashboard() {
             </div>
             <div className="overflow-x-auto">
               <table className="w-full min-w-[560px]">
-                <thead className="bg-slate-50/70">
+                <thead className="bg-paper-100/70">
                   <tr>
                     <th className="table-th">Name</th>
                     <th className="table-th">License Number</th>
@@ -156,7 +148,7 @@ export default function AdminDashboard() {
                     <th className="table-th sr-only">Open</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-slate-200">
                   {recent.map((r, i) => (
                     <tr key={r.id} className="group transition hover:bg-brand-50/40">
                       <td className="table-td">
@@ -186,7 +178,7 @@ export default function AdminDashboard() {
                         </span>
                       </td>
                       <td className="table-td text-right">
-                        <Link href={`/admin/registry/${r.id}`} aria-label={`Open ${fullName(r)}`} className="inline-flex rounded-lg p-1.5 text-slate-300 transition hover:bg-slate-100 hover:text-brand-700">
+                        <Link href={`/admin/registry/${r.id}`} aria-label={`Open ${fullName(r)}`} className="inline-flex rounded-lg p-1.5 text-slate-300 transition hover:bg-paper-100 hover:text-brand-700">
                           <ChevronRight className="h-4 w-4" />
                         </Link>
                       </td>
@@ -264,10 +256,7 @@ export default function AdminDashboard() {
                   Server Status
                 </span>
                 <span className="flex items-center gap-1.5 text-sm font-extrabold text-accent-600">
-                  <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-400 opacity-60" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-500" />
-                  </span>
+                  <span className="inline-flex h-2 w-2 rounded-full bg-accent-500" />
                   Online
                 </span>
               </li>
@@ -277,16 +266,12 @@ export default function AdminDashboard() {
       </div>
 
       {/* Trust strip */}
-      <div className="hero-fade relative overflow-hidden rounded-2xl p-6 text-white sm:p-7">
-        <div className="bg-grid absolute inset-0 opacity-40" />
-        <div className="relative flex flex-wrap items-center gap-4">
-          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/15">
-            <ShieldCheck className="h-6 w-6 text-accent-300" />
-          </span>
+      <div className="band-navy rounded-sm border border-brand-900 p-6 text-white sm:p-7">
+        <div className="flex flex-wrap items-center gap-4">
           <div>
             <p className="font-extrabold tracking-tight">
-              Secure · Reliable · Data-Driven
-              <span className="ml-3 chip bg-accent-500/20 text-accent-200 ring-1 ring-accent-400/30">{percent(stats.byStatus.verified, stats.total)}% verified</span>
+              Registry integrity
+              <span className="ml-3 chip border border-accent-400/60 text-accent-300">{percent(stats.byStatus.verified, stats.total)}% verified</span>
             </p>
             <p className="mt-1 max-w-2xl text-sm text-white/65">
               The Liberia Pharmacy Board&apos;s digital registry ensures accurate records, credential

@@ -4,11 +4,11 @@ import { readAll, writeAll, nextReference, resetToSeeds } from "./store";
 import { uid } from "./utils";
 
 /**
- * REGISTRY API — the single data entry-point for the whole application.
+ * REGISTRY API: the single data entry-point for the whole application.
  * ---------------------------------------------------------------
  * Phase 1 (current): fulfilled from the browser (seeded localStorage demo).
  * Phase 2: each function below maps 1:1 onto a Node.js REST endpoint backed
- * by PostgreSQL — e.g.:
+ * by PostgreSQL, e.g.:
  *      submitRegistration      → POST   /api/registrations
  *      listRegistrations       → GET    /api/registrations?status=&county=&q=
  *      getRegistration         → GET    /api/registrations/:id

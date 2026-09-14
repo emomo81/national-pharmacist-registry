@@ -15,12 +15,12 @@ import {
   LogOut,
   Menu,
   X,
-  Loader2,
   Bell,
 } from "lucide-react";
 import { portalLogout } from "@/lib/portal";
 import { APPLICATION_STATUS_META } from "@/lib/portal-types";
 import { LpbLogo } from "@/components/logo";
+import { Skeleton } from "@/components/ui/skeleton";
 import { cn, initials } from "@/lib/utils";
 import { useAccount } from "./use-account";
 
@@ -34,6 +34,46 @@ const NAV = [
   { href: "/portal/submit", label: "Submit Application", icon: Send },
 ];
 
+/** Layout skeleton shown while the account is read from storage. */
+function ShellSkeleton() {
+  return (
+    <div className="flex min-h-screen bg-paper-100">
+      <aside className="sticky top-0 hidden h-screen w-[268px] shrink-0 flex-col gap-5 bg-brand-950 py-5 lg:flex">
+        <div className="flex items-center gap-3 px-5">
+          <Skeleton className="h-10 w-10 rounded-full bg-white/15" />
+          <div className="space-y-1.5">
+            <Skeleton className="h-3 w-28 bg-white/15" />
+            <Skeleton className="h-3 w-20 bg-white/15" />
+          </div>
+        </div>
+        <nav className="flex-1 space-y-2 px-3">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <Skeleton key={i} className="h-9 w-full bg-white/10" />
+          ))}
+        </nav>
+      </aside>
+      <div className="min-w-0 flex-1">
+        <header className="sticky top-0 flex h-16 items-center justify-between border-b border-slate-300 bg-white px-4 sm:px-6 lg:px-8">
+          <Skeleton className="h-5 w-44" />
+          <div className="flex items-center gap-3">
+            <Skeleton className="h-6 w-32" />
+            <Skeleton className="h-9 w-9 rounded-full" />
+          </div>
+        </header>
+        <main className="space-y-4 p-4 sm:p-6 lg:p-8">
+          <Skeleton className="h-24 w-full" />
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <Skeleton className="h-36 w-full" />
+            <Skeleton className="h-36 w-full" />
+            <Skeleton className="h-36 w-full" />
+          </div>
+          <Skeleton className="h-40 w-full" />
+        </main>
+      </div>
+    </div>
+  );
+}
+
 export function PortalShell({ children, title }: { children: React.ReactNode; title: string }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -41,14 +81,7 @@ export function PortalShell({ children, title }: { children: React.ReactNode; ti
   const { session, account, ready } = useAccount();
 
   if (!ready || !session || !account) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-brand-950">
-        <div className="flex items-center gap-3 text-white/70">
-          <Loader2 className="h-5 w-5 animate-spin" />
-          <span className="text-sm font-medium">Opening your registry account…</span>
-        </div>
-      </div>
-    );
+    return <ShellSkeleton />;
   }
 
   const statusMeta = APPLICATION_STATUS_META[account.applicationStatus];
@@ -64,8 +97,8 @@ export function PortalShell({ children, title }: { children: React.ReactNode; ti
             href={item.href}
             onClick={() => setMenuOpen(false)}
             className={cn(
-              "flex items-center gap-3 rounded-lg px-3.5 py-2.5 text-sm font-semibold transition",
-              active ? "bg-brand-600 text-white shadow" : "text-white/65 hover:bg-white/5 hover:text-white"
+              "flex items-center gap-3 rounded-sm px-3.5 py-2.5 text-sm font-semibold transition-colors",
+              active ? "bg-brand-600 text-white" : "text-white/65 hover:bg-white/10 hover:text-white"
             )}
           >
             <item.icon className={cn("h-4 w-4", active ? "text-white" : "text-white/40")} />
@@ -81,7 +114,7 @@ export function PortalShell({ children, title }: { children: React.ReactNode; ti
       <Link
         href="/portal/support"
         onClick={() => setMenuOpen(false)}
-        className="flex items-center gap-3 rounded-lg px-3.5 py-2.5 text-sm font-semibold text-white/65 transition hover:bg-white/5 hover:text-white"
+        className="flex items-center gap-3 rounded-sm px-3.5 py-2.5 text-sm font-semibold text-white/65 transition-colors hover:bg-white/10 hover:text-white"
       >
         <LifeBuoy className="h-4 w-4 text-white/40" /> Help &amp; Support
       </Link>
@@ -91,7 +124,7 @@ export function PortalShell({ children, title }: { children: React.ReactNode; ti
           portalLogout();
           router.push("/login");
         }}
-        className="flex w-full items-center gap-3 rounded-lg px-3.5 py-2.5 text-sm font-semibold text-white/65 transition hover:bg-red-500/15 hover:text-red-200"
+        className="flex w-full items-center gap-3 rounded-sm px-3.5 py-2.5 text-sm font-semibold text-white/65 transition-colors hover:bg-red-500/15 hover:text-red-200"
       >
         <LogOut className="h-4 w-4 text-white/40" /> Logout
       </button>
@@ -99,8 +132,8 @@ export function PortalShell({ children, title }: { children: React.ReactNode; ti
   );
 
   return (
-    <div className="flex min-h-screen bg-slate-100">
-      {/* Sidebar — desktop */}
+    <div className="flex min-h-screen bg-paper-100">
+      {/* Sidebar, desktop */}
       <aside className="sticky top-0 hidden h-screen w-[268px] shrink-0 flex-col gap-5 bg-brand-950 py-5 lg:flex">
         <Link href="/portal" className="flex items-center gap-3 px-5">
           <LpbLogo size={42} badge />
@@ -120,7 +153,7 @@ export function PortalShell({ children, title }: { children: React.ReactNode; ti
             type="button"
             aria-label="Toggle menu"
             onClick={() => setMenuOpen((v) => !v)}
-            className="rounded-lg p-2 text-white/80 hover:bg-white/10"
+            className="rounded-sm p-2 text-white/80 hover:bg-white/10"
           >
             {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -142,7 +175,7 @@ export function PortalShell({ children, title }: { children: React.ReactNode; ti
 
       {/* Content */}
       <div className="min-w-0 flex-1 pt-14 lg:pt-0">
-        <header className="sticky top-14 z-30 border-b border-slate-200 bg-white/90 backdrop-blur lg:top-0">
+        <header className="sticky top-14 z-30 border-b border-slate-300 bg-white lg:top-0">
           <div className="flex h-16 items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
             <h1 className="truncate text-lg font-extrabold tracking-tight text-brand-950">{title}</h1>
             <div className="flex items-center gap-3">
@@ -150,7 +183,7 @@ export function PortalShell({ children, title }: { children: React.ReactNode; ti
                 <span className={cn("h-1.5 w-1.5 rounded-full", statusMeta.dot)} />
                 {account.applicationStatus === "verified" ? "Active Registration" : APPLICATION_STATUS_META[account.applicationStatus].label}
               </span>
-              <button type="button" className="relative rounded-lg p-2 text-slate-500 hover:bg-slate-100" aria-label="Notifications">
+              <button type="button" className="relative rounded-sm p-2 text-slate-500 hover:bg-paper-200" aria-label="Notifications">
                 <Bell className="h-5 w-5" />
                 {account.activity.length > 0 && (
                   <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-red-500" />

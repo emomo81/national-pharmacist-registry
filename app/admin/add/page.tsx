@@ -87,7 +87,7 @@ export default function AddPharmacistPage() {
 
     setBusy(true);
     const session = getSession();
-    const actor = session ? `${session.name} — ${session.role}` : "LPB Registrar";
+    const actor = session ? `${session.name} (${session.role})` : "LPB Registrar";
     const record = await createManualRegistration({ ...form, by: actor });
     setBusy(false);
     router.push(`/admin/registry/${record.id}`);
@@ -98,21 +98,21 @@ export default function AddPharmacistPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-5">
       <div className="card overflow-hidden">
-        <div className="flex items-center gap-4 border-b border-slate-100 bg-brand-50/50 px-6 py-5">
-          <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-800 text-white">
+        <div className="flex items-center gap-4 border-b border-slate-200 bg-brand-50/50 px-6 py-5">
+          <span className="flex h-11 w-11 items-center justify-center rounded-sm bg-brand-800 text-white">
             <UserPlus className="h-5 w-5" />
           </span>
           <div>
             <h2 className="text-lg font-extrabold tracking-tight text-brand-950">Register New Pharmacist</h2>
             <p className="text-xs text-slate-500">
-              Manual entry by an LPB official — for paper forms captured at county outreach or the Board office.
+              Manual entry by an LPB official, for paper forms captured at county outreach or the Board office.
             </p>
           </div>
         </div>
 
         <form onSubmit={submit} className="space-y-7 px-6 py-6">
           <section>
-            <h3 className="border-b border-slate-100 pb-2.5 text-sm font-extrabold uppercase tracking-wider text-brand-800">Identity</h3>
+            <h3 className="border-b border-slate-200 pb-2.5 text-sm font-extrabold uppercase tracking-wider text-brand-800">Identity</h3>
             <div className="mt-4 grid gap-5 sm:grid-cols-3">
               <Field label="Title" name="title" required error={err("title")}>
                 <SelectInput id="title" value={form.title} onChange={(e) => set("title", e.target.value)} invalid={!!err("title")} placeholder="Select">
@@ -142,7 +142,7 @@ export default function AddPharmacistPage() {
           </section>
 
           <section>
-            <h3 className="border-b border-slate-100 pb-2.5 text-sm font-extrabold uppercase tracking-wider text-brand-800">Licensure &amp; qualification</h3>
+            <h3 className="border-b border-slate-200 pb-2.5 text-sm font-extrabold uppercase tracking-wider text-brand-800">Licensure &amp; qualification</h3>
             <div className="mt-4 grid gap-5 sm:grid-cols-3">
               <Field label="LPB number" name="lpbNumber" required error={err("lpbNumber")}>
                 <TextInput id="lpbNumber" value={form.lpbNumber} onChange={(e) => set("lpbNumber", e.target.value)} invalid={!!err("lpbNumber")} placeholder="RPh-0000" />
@@ -167,7 +167,7 @@ export default function AddPharmacistPage() {
           </section>
 
           <section>
-            <h3 className="border-b border-slate-100 pb-2.5 text-sm font-extrabold uppercase tracking-wider text-brand-800">Practice</h3>
+            <h3 className="border-b border-slate-200 pb-2.5 text-sm font-extrabold uppercase tracking-wider text-brand-800">Practice</h3>
             <div className="mt-4 grid gap-5 sm:grid-cols-3">
               <Field label="County of practice" name="county" required error={err("county")}>
                 <SelectInput id="county" value={form.county} onChange={(e) => set("county", e.target.value)} invalid={!!err("county")} placeholder="Select">
@@ -195,13 +195,13 @@ export default function AddPharmacistPage() {
             </div>
           </section>
 
-          <p className="flex items-start gap-2 rounded-xl border border-sky-200 bg-sky-50 px-4 py-3 text-xs text-sky-800">
+          <p className="flex items-start gap-2 rounded-sm border border-slate-400 bg-paper-100 px-4 py-3 text-xs text-slate-700">
             <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" />
             Records created here appear immediately in the Pharmacist Registry and all analytics. Attach scanned
             credentials later from the record page if needed.
           </p>
 
-          <div className="flex justify-end gap-2 border-t border-slate-100 pt-5">
+          <div className="flex justify-end gap-2 border-t border-slate-200 pt-5">
             <button type="button" onClick={() => setForm(EMPTY)} className="btn-outline">Clear form</button>
             <button type="submit" disabled={busy} className="btn-primary px-6">
               {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <UserPlus className="h-4 w-4" />}

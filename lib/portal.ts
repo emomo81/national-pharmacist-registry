@@ -21,7 +21,7 @@ import { readAll, writeAll, nextReference } from "./store";
 import { uid } from "./utils";
 
 /**
- * PHARMACIST PORTAL API (Phase 1 — browser storage).
+ * PHARMACIST PORTAL API (Phase 1, browser storage).
  * Phase 2 maps these to REST endpoints backed by PostgreSQL:
  *   signup/login        → POST /api/auth/register | /api/auth/login
  *   getAccount          → GET  /api/me
@@ -64,7 +64,7 @@ export async function portalSignup(input: {
   const accounts = loadAccounts();
   const email = input.email.trim().toLowerCase();
   if (accounts.some((a) => a.email.toLowerCase() === email)) {
-    return { error: "An account with this email already exists — please log in instead." };
+    return { error: "An account with this email already exists. Please log in instead." };
   }
   const account: PharmacistAccount = {
     id: uid(),
@@ -316,7 +316,7 @@ function buildRegistration(account: PharmacistAccount, ref: string, existingId?:
       specialization: qual?.fieldOfStudy ?? "",
       otherQualifications: account.qualifications
         .slice(1)
-        .map((q) => `${q.degreeType} (${q.year}) — ${q.institution}`)
+        .map((q) => `${q.degreeType} (${q.year}), ${q.institution}`)
         .join("; "),
     },
     licensure: {

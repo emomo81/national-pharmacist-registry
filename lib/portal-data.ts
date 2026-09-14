@@ -1,7 +1,7 @@
 import type { PharmacistAccount } from "./portal-types";
 
 /**
- * Seeded demo pharmacist account — the one featured in the approved UI/UX kit
+ * Seeded demo pharmacist account, the one featured in the approved UI/UX kit
  * (Emmanuel Momo). Additional accounts created via the public Sign-up page are
  * stored alongside it in the browser until Phase 2 (PostgreSQL).
  */
@@ -50,7 +50,7 @@ export function seedPharmacistAccounts(): PharmacistAccount[] {
           id: "qual-1",
           degreeType: "Bachelor of Pharmacy (BPharm)",
           fieldOfStudy: "Pharmacy",
-          institution: "University of Liberia — School of Pharmacy",
+          institution: "University of Liberia, School of Pharmacy",
           year: "2014",
           certificateName: "bachelor_of_pharmacy.pdf",
           createdAt: "2026-06-20T10:12:00Z",

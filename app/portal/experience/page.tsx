@@ -68,7 +68,7 @@ function ExperienceBody() {
           )}
         </div>
         {open ? (
-          <div className="mt-4 space-y-4 animate-fade-up">
+          <div className="mt-4 space-y-4">
             <Field label="Position / Role" name="role" required error={errors.role}>
               <TextInput id="role" value={form.role} onChange={(e) => setForm({ ...form, role: e.target.value })} invalid={!!errors.role} placeholder="e.g. Pharmacist-in-Charge" />
             </Field>
@@ -117,19 +117,19 @@ function ExperienceBody() {
       </div>
 
       <div className="card overflow-hidden">
-        <div className="border-b border-slate-100 px-5 py-4">
+        <div className="border-b border-slate-200 px-5 py-4">
           <h3 className="font-bold text-brand-950">Employment History</h3>
           <p className="text-xs text-slate-400">{account.experiences.length} on record</p>
         </div>
         {account.experiences.length === 0 ? (
           <p className="px-5 py-12 text-center text-sm text-slate-400">
-            No experience entries yet — add your current or most recent role.
+            No experience entries yet. Add your current or most recent role.
           </p>
         ) : (
-          <ol className="relative divide-y divide-slate-100">
+          <ol className="relative divide-y divide-slate-200">
             {account.experiences.map((e) => (
-              <li key={e.id} className="flex items-start gap-4 px-5 py-4 transition hover:bg-slate-50/60">
-                <span className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+              <li key={e.id} className="flex items-start gap-4 px-5 py-4 transition hover:bg-paper-100/60">
+                <span className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-brand-50 text-brand-600">
                   <Briefcase className="h-5 w-5" />
                 </span>
                 <div className="min-w-0 flex-1">
@@ -139,7 +139,7 @@ function ExperienceBody() {
                   </div>
                   <p className="mt-0.5 text-xs text-slate-500">{e.facility} · {e.sector}</p>
                   <p className="mt-1 flex items-center gap-1 text-[11px] text-slate-400">
-                    <MapPin className="h-3 w-3" /> {e.county} · {e.from} — {e.current ? "Present" : e.to ?? "—"}
+                    <MapPin className="h-3 w-3" /> {e.county} · {e.from} to {e.current ? "present" : e.to ?? "unknown"}
                   </p>
                 </div>
                 <button

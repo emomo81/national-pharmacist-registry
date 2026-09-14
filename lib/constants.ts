@@ -105,12 +105,12 @@ export const COUNTRIES_COMMON = [
 
 export const CENSUS_YEAR = 2026;
 
-/** Registration status metadata — single source for labels & badge styling. */
+/** Registration status metadata: single source for labels & badge styling. */
 export const STATUS_META = {
-  submitted: { label: "Submitted", chip: "bg-sky-100 text-sky-800 ring-1 ring-sky-200", dot: "bg-sky-500" },
-  under_review: { label: "Under review", chip: "bg-amber-100 text-amber-800 ring-1 ring-amber-200", dot: "bg-amber-500" },
-  verified: { label: "Verified", chip: "bg-brand-100 text-brand-800 ring-1 ring-brand-200", dot: "bg-brand-600" },
-  flagged: { label: "Flagged", chip: "bg-red-100 text-red-800 ring-1 ring-red-200", dot: "bg-red-500" },
+  submitted: { label: "Submitted", chip: "bg-brand-50 text-brand-900 border border-brand-300", dot: "bg-brand-500" },
+  under_review: { label: "Under review", chip: "bg-amber-50 text-amber-900 border border-amber-400", dot: "bg-amber-500" },
+  verified: { label: "Verified", chip: "bg-accent-50 text-accent-900 border border-accent-400", dot: "bg-accent-600" },
+  flagged: { label: "Flagged", chip: "bg-red-50 text-red-900 border border-red-400", dot: "bg-red-600" },
 } as const;
 
 export type StatusKey = keyof typeof STATUS_META;
